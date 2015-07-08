@@ -5,7 +5,7 @@ if Meteor.isClient
    Template.content.helpers
       editorOptions: () ->
          lineNumbers: true
-         mode: "javascript"
+         mode: "markdown"
       editorCode: () ->
          "Code to show in editor";
 
