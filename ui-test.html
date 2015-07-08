@@ -145,8 +145,7 @@
 
 <template name="content">
    <div id=content>
-      <h1>Welcome to Meteor!</h1>
-      {{> hello}}
+      {{> CodeMirror id="some-id" name="someName" options=editorOptions code=editorCode reactiveVar="varName"}}
    </div>
 </template>
 

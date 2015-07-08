@@ -9,3 +9,4 @@ coffeescript
 twbs:bootstrap
 accounts-password
 accounts-ui
+perak:codemirror
