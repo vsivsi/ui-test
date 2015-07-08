@@ -1,0 +1,106 @@
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <title>UI-Test</title>
+</head>
+
+<body>
+ <div class="container-fluid">
+   <div class="row">
+      <div class="col-md-10 col-md-push-2" id="maincol">
+         <div id="topNav">
+            {{> userbox}}
+            <div id="pathNav" role="navigation">
+               {{> breadcrumbs}}
+            </div>
+            <div class="panel panel-default">
+               <div class="hidden-print panel-heading">
+                  <div id="tabDiv" role="navigation">
+                     {{> tabs}}
+                  </div>
+                  {{#if messages}}
+                     <p></p>
+                     {{> messages}}
+                  {{/if}}
+               </div>
+               {{> content}}
+               {{#if help}}
+                  {{> help}}
+               {{/if}}
+            </div>
+            <div class="col-md-2 col-md-pull-10 hidden-print" id="sidebar">
+               <div class="row">
+                  {{> logo}}
+                  {{#if sitenav}}
+                     {{> sitenav}}
+                  {{/if}}
+                  {{#if pagetools}}
+                     {{> pagetools}}
+                  {{/if}}
+               </div>
+            </div>
+            <div class="col-md-10 col-md-push-2 hidden-print">
+               {{> footer}}
+            </div>
+         </div>
+      </div>
+   </div>
+ </div>
+</body>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="userbox">
+</template>
+
+<template name="tabs">
+   <ul class="tabs nav nav-pills">
+      <li role="presentation" class="selected active">
+         <a href="/Front%20Page">view</a>
+      </li>
+      <li>
+         <a href="/_edit/Front%20Page">edit</a>
+      </li>
+      <li>
+         <a href="/_history/Front%20Page">history</a>
+      </li>
+      <li>
+         <a href="/_discuss/Front%20Page">discuss</a>
+      </li>
+   </ul>
+</template>
+
+<template name="messages">
+</template>
+
+<template name="logo">
+</template>
+
+<template name="footer">
+</template>
+
+<template name="help">
+</template>
+
+<template name="content">
+   <h1>Welcome to Meteor!</h1>
+   {{> hello}}
+</template>
+
+<template name="breadcrumbs">
+   <ol id="bcNav" class="breadcrumb">
+      <li>
+         <a class="pageTitle" href="/">Contents</a>
+      </li>
+      <li>
+         <a class="pageTitle" href="/">Front Page</a>
+      </li>
+      {{#if revision}}
+         <li>
+            <a class="rev" href="$base$$pageUrl$?revision=$revision$">$revision$</a>
+         </li>
+      {{/if}}
+   </ol>
+</template>
