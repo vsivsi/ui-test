@@ -18,16 +18,11 @@
                   <div id="tabDiv" role="navigation">
                      {{> tabs}}
                   </div>
-                  {{#if messages}}
-                     <p></p>
-                     {{> messages}}
-                  {{/if}}
+                  {{> messages}}
                </div>
                {{> content}}
                {{> categories}}
-               {{#if help}}
-                  {{> help}}
-               {{/if}}
+               {{> help}}
             </div>
          </div>
          <div class="col-md-2 col-md-pull-10 hidden-print" id="sidebar">
@@ -43,11 +38,6 @@
       </div>
    </div>
 </body>
-
-<template name="hello">
-  <button class="btn btn-default">Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
 
 <template name="userbox">
    <div class="loginTemp" >
