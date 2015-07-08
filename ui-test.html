@@ -4,13 +4,14 @@
 </head>
 
 <body>
- <div class="container-fluid">
-   <div class="row">
-      <div class="col-md-10 col-md-push-2" id="maincol">
-         <div id="topNav">
-            {{> userbox}}
-            <div id="pathNav" role="navigation">
-               {{> breadcrumbs}}
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-10 col-md-push-2" id="maincol">
+            <div id="topNav">
+               {{> userbox}}
+               <div id="pathNav" role="navigation">
+                  {{> breadcrumbs}}
+               </div>
             </div>
             <div class="panel panel-default">
                <div class="hidden-print panel-heading">
@@ -23,36 +24,47 @@
                   {{/if}}
                </div>
                {{> content}}
+               {{> categories}}
                {{#if help}}
                   {{> help}}
                {{/if}}
             </div>
-            <div class="col-md-2 col-md-pull-10 hidden-print" id="sidebar">
-               <div class="row">
-                  {{> logo}}
-                  {{#if sitenav}}
-                     {{> sitenav}}
-                  {{/if}}
-                  {{#if pagetools}}
-                     {{> pagetools}}
-                  {{/if}}
-               </div>
+         </div>
+         <div class="col-md-2 col-md-pull-10 hidden-print" id="sidebar">
+            <div class="row">
+               {{> logo}}
+               {{> sitenav}}
+               {{> pagetools}}
             </div>
-            <div class="col-md-10 col-md-push-2 hidden-print">
-               {{> footer}}
-            </div>
+         </div>
+         <div class="col-md-10 col-md-push-2 hidden-print">
+            {{> footer}}
          </div>
       </div>
    </div>
- </div>
 </body>
 
 <template name="hello">
-  <button>Click Me</button>
+  <button class="btn btn-default">Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
 </template>
 
 <template name="userbox">
+   <div class="loginTemp" >
+      {{> loginButtons align="right"}}
+   </div>
+</template>
+
+<template name="categories">
+   <div class="panel-footer hidden-print" id="categoryList">
+      <ul class="list-inline">
+         <li>
+            <a href="/_category/system">
+               <span class="label label-primary">system</span>
+            </a>
+         </li>
+      </ul>
+   </div>
 </template>
 
 <template name="tabs">
@@ -75,18 +87,67 @@
 <template name="messages">
 </template>
 
+<template name="sitenav">
+   <div class="sitenav col-sm-6 col-md-12">
+     <div class="panel panel-default">
+       <div class="panel-heading">Site</div>
+       <div class="panel-body" role="navigation">
+           <ul>
+             <li role="presentation"><a href="/">Front page</a></li>
+             <li role="presentation"><a href="/_index">Contents</a></li>
+             <li role="presentation"><a href="/_categories">Categories</a></li>
+             <li role="presentation"><a href="/_random">Random page</a></li>
+             <li role="presentation"><a href="/_activity">Recent activity</a></li>
+             <li role="presentation"><a href="/_upload">Upload a file</a></li>
+             <li role="presentation"><a href="/Help">Help</a></li>
+           </ul>
+         <form action="/_go" method="post" id="goform">
+           <input name="gotopage" id="gotopage" class="form-control input-sm" placeholder="Go to page" type="text">
+         </form>
+         <form action="/_search" method="get" id="searchform">
+           <input name="patterns" id="patterns" class="form-control input-sm" placeholder="Search" type="text">
+         </form>
+       </div>
+     </div>
+   </div>
+</template>
+
+<template name="pagetools">
+   <div class="pageTools col-sm-6 col-md-12">
+       <div class="panel panel-default">
+           <div class="panel-heading">This page</div>
+           <div class="panel-body" role="navigation">
+               <ul>
+                   <li role="presentation"><a href="/_showraw/Front%20Page">Raw page source</a></li>
+                   <li role="presentation"><a href="/Front%20Page?printable">Printable version</a></li>
+                   <li role="presentation"><a href="/_delete/Front%20Page">Delete this page</a></li>
+               </ul>
+               <form class="form-inline" action="/Front%20Page" method="post" id="exportbox"><select class="form-control input-sm" name="format"><option value="LaTeX">LaTeX</option><option value="ConTeXt">ConTeXt</option><option value="Texinfo">Texinfo</option><option value="reST">reST</option><option value="Markdown">Markdown</option><option value="CommonMark">CommonMark</option><option value="Plain text">Plain text</option><option value="MediaWiki">MediaWiki</option><option value="Org-mode">Org-mode</option><option value="ICML">ICML</option><option value="Textile">Textile</option><option value="AsciiDoc">AsciiDoc</option><option value="Man page">Man page</option><option value="DocBook">DocBook</option><option value="DZSlides">DZSlides</option><option value="Slidy">Slidy</option><option value="S5">S5</option><option value="EPUB">EPUB</option><option value="ODT">ODT</option><option value="DOCX">DOCX</option><option value="RTF">RTF</option></select>&nbsp;<input class="form-control btn btn-default btn-sm" name="export" id="export" value="Export" type="submit"></form>
+           </div>
+       </div>
+   </div>
+</template>
+
 <template name="logo">
+   <div id="logo" class="hidden-xs hidden-sm col-md-12">
+     <a href="/" alt="site logo" title="Go to top page"><img src="logo.png"></a>
+   </div>
 </template>
 
 <template name="footer">
+   <div id="footer">
+      <p>Powered by Meteor</p>
+   </div>
 </template>
 
 <template name="help">
 </template>
 
 <template name="content">
-   <h1>Welcome to Meteor!</h1>
-   {{> hello}}
+   <div id=content>
+      <h1>Welcome to Meteor!</h1>
+      {{> hello}}
+   </div>
 </template>
 
 <template name="breadcrumbs">
